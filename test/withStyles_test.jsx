@@ -340,12 +340,16 @@ describe('withStyles()', () => {
       }))(MyComponent);
 
       // copied
-      expect(Wrapped.propTypes).to.include.keys('foo', '_extendStyleFn');
-      expect(MyComponent.propTypes).to.include.keys('styles', 'theme', 'css');
+      const expectedPropTypes = { ...MyComponent.propTypes };
+      delete expectedPropTypes.styles;
+      delete expectedPropTypes.theme;
+      delete expectedPropTypes.css;
+      expect(Wrapped.propTypes).to.eql(expectedPropTypes);
+      expect(MyComponent.propTypes).to.include.keys('styles', 'theme');
 
       expect(Wrapped.defaultProps).to.eql(MyComponent.defaultProps);
 
-      // // cloned
+      // cloned
       expect(Wrapped.propTypes).not.to.equal(MyComponent.propTypes);
       expect(Wrapped.defaultProps).not.to.equal(MyComponent.defaultProps);
     });

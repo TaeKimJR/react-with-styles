@@ -19,8 +19,8 @@ export const withStylesPropTypes = {
   css: PropTypes.func.isRequired,
 };
 
-export const EMPTY_STYLES = {};
-export const EMPTY_STYLES_FN = () => EMPTY_STYLES;
+const EMPTY_STYLES = {};
+const EMPTY_STYLES_FN = () => EMPTY_STYLES;
 
 function baseClass(pureComponent) {
   if (pureComponent) {

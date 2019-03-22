@@ -11,22 +11,15 @@ function registerInterface(interfaceToRegister) {
 
 function create(makeFromTheme, createWithDirection) {
   const styles = createWithDirection(makeFromTheme(styleTheme));
-
   return () => styles;
 }
 
 function createLTR(makeFromTheme) {
-  return create(
-    makeFromTheme,
-    styleInterface.createLTR || styleInterface.create,
-  );
+  return create(makeFromTheme, styleInterface.createLTR || styleInterface.create);
 }
 
 function createRTL(makeFromTheme) {
-  return create(
-    makeFromTheme,
-    styleInterface.createRTL || styleInterface.create,
-  );
+  return create(makeFromTheme, styleInterface.createRTL || styleInterface.create);
 }
 
 function get() {
